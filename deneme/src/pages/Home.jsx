@@ -1,5 +1,6 @@
 import React from 'react';
 import Hero from '../components/Hero';
+import MatchTicker from '../components/MatchTicker';
 import UpcomingMatches from '../components/UpcomingMatches';
 import Players from '../components/Players';
 import Sponsors from '../components/Sponsors';
@@ -13,6 +14,7 @@ export default function Home({ lang }) {
   return (
     <div>
       <Hero lang={lang} />
+      <MatchTicker lang={lang} />
       <UpcomingMatches lang={lang} />
       <Players lang={lang} />
       <Sponsors lang={lang} />

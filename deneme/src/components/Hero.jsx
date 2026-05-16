@@ -1,70 +1,76 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import heroArena from '../assets/hero-arena.png';
+import heroNew from '../assets/hero-new.png';
 
 export default function Hero({ lang }) {
   const T = {
     tr: {
-      eyebrow: 'Premium Esports Takımı',
-      subtitle: 'Dünya 1.si',
-      desc: 'FTNCC E-sports: Hırs, Tutku ve Zafer.',
-      explore: 'Keşfet',
-      stats: [{ v: '25+', l: 'Kupa' }, { v: '50+', l: 'Oyuncu' }, { v: '#1', l: 'Global' }],
+      tag: 'CANLI',
+      title: 'FTNCC ESPORTS',
+      desc: 'Sınırları Zorlayan Performans. Geleceğin Şampiyonları Burada Yetişiyor.',
+      cta: 'HABERLERE GÖZ AT',
+      featured: [
+        { title: 'MAÇ GÜNÜ', subtitle: 'FTNC vs NAVI', time: 'BUGÜN 20:00' },
+        { title: 'YENİ FORMA', subtitle: '2024 SEZONU', time: 'ŞİMDİ AL' },
+        { title: 'AKADEMİ', subtitle: 'BAŞVURULAR', time: 'AÇIK' }
+      ]
     },
     en: {
-      eyebrow: 'Premium Esports Team',
-      subtitle: 'World 1st',
-      desc: 'FTNCC E-sports: Ambition, Passion, and Victory.',
-      explore: 'Explore',
-      stats: [{ v: '25+', l: 'Trophies' }, { v: '50+', l: 'Players' }, { v: '#1', l: 'Global' }],
+      tag: 'LIVE',
+      title: 'FTNCC ESPORTS',
+      desc: 'Pushing the boundaries of performance. Future champions are made here.',
+      cta: 'BROWSE NEWS',
+      featured: [
+        { title: 'MATCH DAY', subtitle: 'FTNC vs NAVI', time: 'TODAY 20:00' },
+        { title: 'NEW JERSEY', subtitle: '2024 SEASON', time: 'BUY NOW' },
+        { title: 'ACADEMY', subtitle: 'APPLICATIONS', time: 'OPEN' }
+      ]
     },
   }[lang];
 
   return (
-    <section className="hero">
-      {/* Background */}
-      <div
-        className="hero-bg"
-        style={{ backgroundImage: `url(${heroArena})` }}
-      />
-      <div className="hero-overlay-1" />
-      <div className="hero-overlay-2" />
-
-      {/* Content */}
-      <motion.div
-        className="hero-content"
-        initial={{ opacity: 0, x: -40 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.9, ease: 'easeOut' }}
-      >
-        <div className="hero-eyebrow">
-          <div className="hero-eyebrow-line" />
-          <span className="hero-eyebrow-text">{T.eyebrow}</span>
+    <section className="hero-navi">
+      <div className="hero-navi-main">
+        <div className="hero-navi-bg-wrap">
+          <img src={heroNew} alt="Background" className="hero-navi-bg" />
+          <div className="hero-navi-gradient" />
         </div>
-
-        <h1 className="hero-title">
-          FTNCC
-        </h1>
-
-        <p className="hero-subtitle">{T.subtitle}</p>
-        <p className="hero-desc">{T.desc}</p>
-
-        <div className="hero-btns">
-          <Link to="/about" className="btn-primary">
-            {T.explore}
-          </Link>
-        </div>
-
-        <div className="hero-stats">
-          {T.stats.map((s, i) => (
-            <div key={i} className="hero-stat">
-              <div className="hero-stat-value">{s.v}</div>
-              <div className="hero-stat-label">{s.l}</div>
+        
+        <div className="hero-navi-content">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="hero-navi-tag">
+              <span className="dot" /> {T.tag}
             </div>
-          ))}
+            <h1 className="hero-navi-title">{T.title}</h1>
+            <p className="hero-navi-desc">{T.desc}</p>
+            <Link to="/about" className="btn-navi-yellow">
+              {T.cta}
+            </Link>
+          </motion.div>
         </div>
-      </motion.div>
+      </div>
+
+      <div className="hero-navi-grid">
+        {T.featured.map((item, i) => (
+          <motion.div 
+            key={i} 
+            className="hero-navi-card"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 + i * 0.1 }}
+          >
+            <div className="card-top">{item.title}</div>
+            <div className="card-mid">{item.subtitle}</div>
+            <div className="card-bot">{item.time}</div>
+            <div className="card-hover-bg" />
+          </motion.div>
+        ))}
+      </div>
     </section>
   );
 }
