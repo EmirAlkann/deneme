@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import heroArena from '../assets/hero-arena.png';
 
 export default function Hero({ lang }) {
@@ -8,7 +9,6 @@ export default function Hero({ lang }) {
       eyebrow: 'Premium Esports Takımı',
       subtitle: 'Dünya 1.si',
       desc: 'FTNCC E-sports: Hırs, Tutku ve Zafer.',
-      cta: 'Takıma Katıl',
       explore: 'Keşfet',
       stats: [{ v: '25+', l: 'Kupa' }, { v: '50+', l: 'Oyuncu' }, { v: '#1', l: 'Global' }],
     },
@@ -16,7 +16,6 @@ export default function Hero({ lang }) {
       eyebrow: 'Premium Esports Team',
       subtitle: 'World 1st',
       desc: 'FTNCC E-sports: Ambition, Passion, and Victory.',
-      cta: 'Join The Team',
       explore: 'Explore',
       stats: [{ v: '25+', l: 'Trophies' }, { v: '50+', l: 'Players' }, { v: '#1', l: 'Global' }],
     },
@@ -52,8 +51,9 @@ export default function Hero({ lang }) {
         <p className="hero-desc">{T.desc}</p>
 
         <div className="hero-btns">
-          <button className="btn-primary">{T.cta}</button>
-          <button className="btn-secondary">{T.explore}</button>
+          <Link to="/about" className="btn-primary">
+            {T.explore}
+          </Link>
         </div>
 
         <div className="hero-stats">

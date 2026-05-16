@@ -1,6 +1,6 @@
 import React from 'react';
 import Hero from '../components/Hero';
-import Competitions from '../components/Competitions';
+import UpcomingMatches from '../components/UpcomingMatches';
 import Players from '../components/Players';
 import Sponsors from '../components/Sponsors';
 
@@ -13,7 +13,7 @@ export default function Home({ lang }) {
   return (
     <div>
       <Hero lang={lang} />
-      <Competitions lang={lang} />
+      <UpcomingMatches lang={lang} />
       <Players lang={lang} />
       <Sponsors lang={lang} />
 
