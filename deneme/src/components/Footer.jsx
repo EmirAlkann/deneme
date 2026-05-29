@@ -52,7 +52,7 @@ export default function Footer({ lang }) {
           <div>
             <p className="footer-col-title">{T.contact}</p>
             <div className="footer-contact-item"><Mail size={14} /> info@ftncc.com</div>
-            <div className="footer-contact-item"><Phone size={14} /> +90 212 000 0000</div>
+            <div className="footer-contact-item"><Phone size={14} /> +90 310 44 32</div>
             <div className="footer-contact-item"><MapPin size={14} /> İstanbul, Türkiye</div>
           </div>
 

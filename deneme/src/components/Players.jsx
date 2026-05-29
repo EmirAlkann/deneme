@@ -1,4 +1,5 @@
 import React from 'react';
+import './Players.css';
 
 const PLAYERS = [
   { name: 'Mustafa Arda Gürlü', role: 'Captain' },
@@ -15,7 +16,7 @@ export default function Players({ lang }) {
   }[lang];
 
   return (
-    <section className="players-section" style={{ padding: '100px 0', background: 'var(--bg)' }}>
+    <section className="players-section">
       <div className="section-container">
         <div className="section-header">
           <h2 className="section-title">
@@ -24,29 +25,16 @@ export default function Players({ lang }) {
           <div className="section-divider" />
         </div>
 
-        <div className="players-grid" style={{ 
-          display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', 
-          gap: '32px' 
-        }}>
+        <div className="players-grid">
           {PLAYERS.map(player => (
-            <div key={player.name} className="player-card" style={{
-              background: 'var(--surface)',
-              backdropFilter: 'blur(10px)',
-              border: '1px solid var(--glass)',
-              borderRadius: '24px',
-              padding: '32px 24px',
-              textAlign: 'center',
-              boxShadow: '0 8px 30px rgba(0,0,0,0.15)',
-              transition: 'transform 0.3s, borderColor 0.3s'
-            }}>
+            <div key={player.name} className="player-card">
               <img 
                 src={`https://ui-avatars.com/api/?name=${encodeURIComponent(player.name)}&background=random&color=fff&size=128&rounded=true`} 
                 alt={player.name} 
-                style={{ width: '100px', height: '100px', borderRadius: '50%', marginBottom: '20px', border: '3px solid var(--primary)' }}
+                className="player-avatar"
               />
-              <h3 style={{ fontFamily: 'Outfit, sans-serif', fontSize: '1.1rem', marginBottom: '8px' }}>{player.name}</h3>
-              <p style={{ fontSize: '0.8rem', color: 'var(--muted)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>{player.role}</p>
+              <h3 className="player-name">{player.name}</h3>
+              <p className="player-role">{player.role}</p>
             </div>
           ))}
         </div>

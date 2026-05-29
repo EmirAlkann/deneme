@@ -1,0 +1,845 @@
+/* ==========================================================================
+   COMPETITIONS & TEAMS PAGE STYLES
+   ========================================================================== */
+
+.competitions-page-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 48px 120px;
+  animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---- TEAM SELECTOR BAR ---- */
+.game-selector-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 50px;
+}
+
+.game-tab-btn {
+  background: var(--surface);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.game-tab-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, var(--game-accent), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+
+.game-tab-btn:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.game-tab-btn.active-tab {
+  border-color: var(--game-accent);
+  box-shadow: 0 0 25px rgba(var(--game-accent-rgb), 0.25), inset 0 0 12px rgba(var(--game-accent-rgb), 0.1);
+  background: rgba(20, 20, 25, 0.6);
+}
+
+.game-tab-btn.active-tab::before {
+  opacity: 0.12;
+}
+
+.game-tab-icon {
+  width: 48px;
+  height: 48px;
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+.game-tab-btn:hover .game-tab-icon {
+  transform: scale(1.1);
+}
+
+.game-tab-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  z-index: 1;
+  transition: color 0.3s ease;
+}
+
+.game-tab-btn.active-tab .game-tab-title {
+  color: #fff;
+  text-shadow: 0 0 10px rgba(var(--game-accent-rgb), 0.5);
+}
+
+/* ---- TEAM BANNER ---- */
+.team-banner {
+  background: var(--surface);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--game-accent);
+  border-radius: 20px;
+  padding: 40px;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.team-banner-left {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  z-index: 1;
+}
+
+.banner-icon-wrap {
+  width: 70px;
+  height: 70px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.banner-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.banner-team-tag {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--game-accent);
+}
+
+.banner-team-name {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: #fff;
+  line-height: 1.1;
+}
+
+.team-banner-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  gap: 8px;
+  z-index: 1;
+}
+
+.banner-league-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+}
+
+.banner-league-val {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.banner-status-badge {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--game-accent);
+  background: rgba(var(--game-accent-rgb), 0.12);
+  border: 1px solid rgba(var(--game-accent-rgb), 0.25);
+  padding: 6px 14px;
+  border-radius: 6px;
+  margin-top: 6px;
+}
+
+/* ---- VIEW TABS ---- */
+.dashboard-tabs {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 40px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 12px;
+}
+
+.dash-tab-btn {
+  background: none;
+  border: none;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.4);
+  padding: 10px 24px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dash-tab-btn:hover {
+  color: #fff;
+}
+
+.dash-tab-btn.active-dash-tab {
+  color: #fff;
+}
+
+.dash-tab-btn::after {
+  content: '';
+  position: absolute;
+  bottom: -13px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--game-accent);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.dash-tab-btn.active-dash-tab::after {
+  transform: scaleX(1);
+}
+
+/* ==========================
+   ROSTER SECTION
+   ========================== */
+.roster-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 30px;
+}
+
+.player-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.player-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(var(--game-accent-rgb), 0.35);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 25px rgba(var(--game-accent-rgb), 0.1);
+}
+
+.player-avatar-wrap {
+  width: 100%;
+  aspect-ratio: 4/5;
+  background: linear-gradient(180deg, rgba(20, 20, 25, 0) 40%, rgba(20, 20, 25, 0.95) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.player-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.player-card:hover .player-avatar {
+  transform: scale(1.08);
+}
+
+/* Background overlay inside avatar wrap */
+.player-avatar-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, #08080a 0%, transparent 60%);
+  z-index: 1;
+}
+
+.player-role-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+  border: 1px solid var(--border);
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 4px;
+  z-index: 2;
+}
+
+.player-info-footer {
+  padding: 24px;
+  background: rgba(10, 10, 12, 0.8);
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 2;
+}
+
+.player-nickname {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  color: #fff;
+}
+
+.player-realname {
+  font-size: 0.75rem;
+  color: var(--muted);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Social Hover Layer */
+.player-social-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 8, 10, 0.92);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 3;
+  padding: 30px;
+  text-align: center;
+}
+
+.player-card:hover .player-social-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.social-overlay-nickname {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--game-accent);
+  text-shadow: 0 0 15px rgba(var(--game-accent-rgb), 0.4);
+}
+
+.social-overlay-role {
+  font-size: 0.75rem;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-weight: 700;
+  margin-top: -12px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 10px;
+  width: 80px;
+}
+
+.social-icons-row {
+  display: flex;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.social-icon-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.6);
+  transition: all 0.3s ease;
+}
+
+.social-icon-circle:hover {
+  background: var(--game-accent);
+  border-color: var(--game-accent);
+  color: #000;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(var(--game-accent-rgb), 0.4);
+}
+
+/* ==========================
+   MATCHES SUBSECTION
+   ========================== */
+.matches-section-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.matches-subtabs {
+  display: flex;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border);
+  padding: 6px;
+  border-radius: 12px;
+  align-self: flex-start;
+}
+
+.subtab-btn {
+  background: none;
+  border: none;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.5);
+  padding: 8px 18px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+}
+
+.subtab-btn:hover {
+  color: #fff;
+}
+
+.subtab-btn.active-subtab {
+  background: var(--game-accent);
+  color: #000;
+  font-weight: 900;
+  box-shadow: 0 4px 15px rgba(var(--game-accent-rgb), 0.35);
+}
+
+/* ---- MATCH LIST ---- */
+.match-rows-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.match-row-card {
+  background: var(--surface);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px 32px;
+  display: grid;
+  grid-template-columns: 1.5fr 3fr 1.5fr;
+  align-items: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.match-row-card:hover {
+  border-color: rgba(var(--game-accent-rgb), 0.25);
+  background: rgba(20, 20, 25, 0.6);
+  transform: scale(1.01);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Col 1: Tournament & Date */
+.match-meta-col {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.match-league-name {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.match-date-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: #fff;
+  font-weight: 600;
+}
+
+.match-date-icon {
+  color: var(--game-accent);
+}
+
+/* Col 2: Versus Display */
+.match-versus-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 35px;
+}
+
+.vs-team {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 40%;
+}
+
+.vs-team.team-home {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.vs-team.team-away {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.vs-team-logo-circle {
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 900;
+  font-size: 0.8rem;
+  color: #fff;
+  flex-shrink: 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.vs-team.ftncc-team .vs-team-logo-circle {
+  border-color: var(--game-accent);
+  box-shadow: 0 0 15px rgba(var(--game-accent-rgb), 0.25);
+  color: var(--game-accent);
+}
+
+.vs-team-name {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.vs-team.ftncc-team .vs-team-name {
+  color: var(--game-accent);
+  text-shadow: 0 0 10px rgba(var(--game-accent-rgb), 0.2);
+}
+
+/* Center Scoreboard or VS divider */
+.vs-score-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-width: 100px;
+}
+
+.score-box {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--border);
+  padding: 8px 18px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  color: #fff;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.vs-divider-text {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.score-win-badge {
+  font-size: 0.55rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 3px 8px;
+  border-radius: 4px;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.25);
+}
+
+.score-loss-badge {
+  font-size: 0.55rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  padding: 3px 8px;
+  border-radius: 4px;
+  box-shadow: 0 0 8px rgba(239, 68, 68, 0.25);
+}
+
+/* Col 3: Actions Column */
+.match-action-col {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.btn-match-stream {
+  background: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  color: #000;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.15);
+}
+
+.btn-match-stream:hover {
+  background: var(--game-accent);
+  color: #000;
+  box-shadow: 0 6px 20px rgba(var(--game-accent-rgb), 0.4);
+  transform: translateY(-2px);
+}
+
+.btn-match-stats {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.btn-match-stats:hover {
+  border-color: var(--game-accent);
+  color: var(--game-accent);
+  background: rgba(var(--game-accent-rgb), 0.05);
+}
+
+/* Flashing LIVE indicator */
+.match-live-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  padding: 6px 12px;
+  border-radius: 6px;
+  animation: pulseBg 1.5s infinite alternate;
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ef4444;
+  box-shadow: 0 0 10px #ef4444;
+  animation: blinkLive 1s infinite alternate;
+}
+
+@keyframes blinkLive {
+  from {
+    opacity: 0.3;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes pulseBg {
+  from {
+    box-shadow: 0 0 5px rgba(239, 68, 68, 0.1);
+  }
+
+  to {
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.3);
+  }
+}
+
+/* Empty State matches */
+.matches-empty-state {
+  text-align: center;
+  padding: 60px 40px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+.empty-state-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.empty-state-desc {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* ==========================================================================
+   MEDIA QUERIES / RESPONSIVENESS
+   ========================================================================== */
+
+@media (max-width: 1100px) {
+  .match-row-card {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 24px;
+  }
+
+  .match-versus-col {
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .vs-team {
+    width: 38%;
+  }
+
+  .match-action-col {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 900px) {
+  .game-selector-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .team-banner {
+    padding: 28px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .team-banner-right {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+
+@media (max-width: 600px) {
+  .competitions-page-container {
+    padding: 24px 20px 80px;
+  }
+
+  .vs-team-name {
+    font-size: 0.8rem;
+  }
+
+  .score-box {
+    font-size: 1.1rem;
+    padding: 6px 12px;
+  }
+
+  .vs-team-logo-circle {
+    width: 36px;
+    height: 36px;
+    font-size: 0.7rem;
+  }
+
+  .dashboard-tabs {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .dash-tab-btn {
+    font-size: 0.85rem;
+    padding: 8px 12px;
+  }
+}

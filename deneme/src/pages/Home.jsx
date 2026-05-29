@@ -1,11 +1,13 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Hero from '../components/Hero';
 import MatchTicker from '../components/MatchTicker';
 import UpcomingMatches from '../components/UpcomingMatches';
 import Players from '../components/Players';
 import Sponsors from '../components/Sponsors';
 
-export default function Home({ lang }) {
+export default function Home({ lang, onBrowseNews }) {
+  const navigate = useNavigate();
   const T = {
     tr: { ctaTitle: 'Turnuvaya Hazır mısın?', ctaDesc: 'FTNCC seçmeleri başlıyor. Takıma katılmak için hemen başvur.', ctaBtn: 'Şimdi Başvur' },
     en: { ctaTitle: 'Ready for the Tournament?', ctaDesc: 'FTNCC tryouts are starting. Apply now to join the team.', ctaBtn: 'Apply Now' },
@@ -13,7 +15,8 @@ export default function Home({ lang }) {
 
   return (
     <div>
-      <Hero lang={lang} />
+      <Hero lang={lang} onBrowseNews={onBrowseNews} />
+
       <MatchTicker lang={lang} />
       <UpcomingMatches lang={lang} />
       <Players lang={lang} />
@@ -26,7 +29,9 @@ export default function Home({ lang }) {
               <h2 className="home-cta-title">{T.ctaTitle}</h2>
               <p className="home-cta-desc">{T.ctaDesc}</p>
             </div>
-            <button className="btn-primary">{T.ctaBtn}</button>
+            <button className="btn-primary" onClick={() => navigate('/apply')}>
+              {T.ctaBtn}
+            </button>
           </div>
         </div>
       </section>

@@ -1,0 +1,84 @@
+.players-section {
+  padding: 100px 0;
+  background: var(--bg);
+}
+
+.players-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px;
+}
+
+.player-card {
+  background: var(--surface);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass);
+  border-radius: 24px;
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+  flex: 0 1 calc(20% - 26px);
+  min-width: 220px;
+  max-width: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.player-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(0, 242, 255, 0.4);
+  box-shadow: 0 15px 35px rgba(0, 242, 255, 0.15);
+  background: rgba(0, 242, 255, 0.03);
+}
+
+.player-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  border: 3px solid var(--primary);
+  object-fit: cover;
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s ease;
+}
+
+.player-card:hover .player-avatar {
+  transform: scale(1.08);
+  box-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
+}
+
+.player-name {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.player-role {
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+}
+
+@media (max-width: 1200px) {
+  .player-card {
+    flex: 0 1 calc(33.333% - 22px);
+  }
+}
+
+@media (max-width: 768px) {
+  .player-card {
+    flex: 0 1 calc(50% - 16px);
+  }
+}
+
+@media (max-width: 480px) {
+  .player-card {
+    flex: 0 1 100%;
+  }
+}

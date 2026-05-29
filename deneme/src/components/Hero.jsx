@@ -1,24 +1,25 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import heroNew from '../assets/hero-new.png';
 
-export default function Hero({ lang }) {
+export default function Hero({ lang, onBrowseNews }) {
+  const navigate = useNavigate();
   const T = {
     tr: {
       tag: 'CANLI',
-      title: 'FTNCC ESPORTS',
+      title: 'FTNCC\nESPORTS',
       desc: 'Sınırları Zorlayan Performans. Geleceğin Şampiyonları Burada Yetişiyor.',
       cta: 'HABERLERE GÖZ AT',
       featured: [
         { title: 'MAÇ GÜNÜ', subtitle: 'FTNC vs NAVI', time: 'BUGÜN 20:00' },
-        { title: 'YENİ FORMA', subtitle: '2024 SEZONU', time: 'ŞİMDİ AL' },
+        { title: 'YENİ FORMA', subtitle: '2026 SEZONU', time: 'ŞİMDİ AL' },
         { title: 'AKADEMİ', subtitle: 'BAŞVURULAR', time: 'AÇIK' }
       ]
     },
     en: {
       tag: 'LIVE',
-      title: 'FTNCC ESPORTS',
+      title: 'FTNCC\nESPORTS',
       desc: 'Pushing the boundaries of performance. Future champions are made here.',
       cta: 'BROWSE NEWS',
       featured: [
@@ -36,7 +37,7 @@ export default function Hero({ lang }) {
           <img src={heroNew} alt="Background" className="hero-navi-bg" />
           <div className="hero-navi-gradient" />
         </div>
-        
+
         <div className="hero-navi-content">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -48,21 +49,37 @@ export default function Hero({ lang }) {
             </div>
             <h1 className="hero-navi-title">{T.title}</h1>
             <p className="hero-navi-desc">{T.desc}</p>
-            <Link to="/about" className="btn-navi-yellow">
+            <button
+              onClick={() => {
+                onBrowseNews();
+                navigate('/news');
+              }}
+              className="btn-navi-yellow"
+              style={{ border: 'none', cursor: 'pointer' }}
+            >
               {T.cta}
-            </Link>
+            </button>
           </motion.div>
         </div>
       </div>
 
+
       <div className="hero-navi-grid">
         {T.featured.map((item, i) => (
-          <motion.div 
-            key={i} 
+          <motion.div
+            key={i}
             className="hero-navi-card"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 + i * 0.1 }}
+            style={{ cursor: (i === 1 || i === 2) ? 'pointer' : 'default' }}
+            onClick={() => {
+              if (i === 1) {
+                navigate('/store');
+              } else if (i === 2) {
+                navigate('/apply');
+              }
+            }}
           >
             <div className="card-top">{item.title}</div>
             <div className="card-mid">{item.subtitle}</div>

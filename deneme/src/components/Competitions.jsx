@@ -1,7 +1,14 @@
 import React from 'react';
-import { Trophy, Target, Users, Zap } from 'lucide-react';
+import { Users } from 'lucide-react';
+import lolLogo from '../assets/lol-logo.png';
+import cs2Logo from '../assets/cs2-logo.png';
+import apexLogo from '../assets/apex-logo.png';
 
-const icons = [<Target size={28} />, <Zap size={28} />, <Trophy size={28} />];
+const icons = [
+  <img src={cs2Logo} alt="Counter-Strike 2" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />,
+  <img src={lolLogo} alt="League of Legends" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />,
+  <img src={apexLogo} alt="Apex Legends" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />
+];
 
 export default function Competitions({ lang }) {
   const T = {
